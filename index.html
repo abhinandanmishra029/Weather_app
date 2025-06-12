@@ -4,187 +4,133 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Weather App</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+      body {
+        background: linear-gradient(to bottom right, #3a1c71, #d76d77, #ffaf7b);
+        color: white;
+      }
+      .navbar {
+        background-color: #48e0d3 !important;
+      }
+      .card {
+        background-color: #0d1b2a;
+        color: white;
+        border: 1px solid #00d4ff;
+      }
+      .card-header {
+        background-color: #1b263b !important;
+        border-bottom: 2px solid #00d4ff;
+      }
+      .footer-text {
+        font-style: italic;
+        text-align: right;
+        margin-top: 40px;
+        color: #ffffffcc;
+      }
+      .navbar-brand b {
+        font-size: 1.4rem;
+      }
+    </style>
   </head>
-  <body style="background-color: rgb(62, 62, 237)">
 
-      
-      <nav class="navbar navbar-expand-lg " style="background-color: rgb(73, 255, 216) ">
-            <div class="container-fluid" >
-              <a class="navbar-brand" ><b>Weather App</b></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/about.html">About us</a>
-                  </li>
-                  
-                  <!-- <li class="nav-item">
-                    <a class="nav-link disabled">Usage Guide</a>
-                  </li> -->
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand"><b>🌦️ Weather App</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">🏠 Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about.html">ℹ️ About Us</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input id="city" class="form-control me-2" type="search" placeholder="Enter city name" aria-label="Search">
+            <button class="btn btn-outline-light" type="submit" id="submit">🔍 Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+      <h1 class="my-4 text-center">🌍 Weather in <span id="cityName">Your City</span></h1>
+
+      <main>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+          <!-- Temperature Card -->
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-bold">🌡️ Temperatures</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title"><span id="temp2"></span> <small class="text-muted fw-light">&#8451;</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>🌡️ Temperature: <span id="temp"></span> °C</li>
+                  <li>🔻 Min Temp: <span id="min_temp"></span> °C</li>
+                  <li>🔺 Max Temp: <span id="max_temp"></span> °C</li>
                 </ul>
-                <form class="d-flex" role="search">
-                  <input id="city" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
-                </form>
               </div>
             </div>
-          </nav>
-
-          
-<!-- New form card -->
-
-          <div class="container">
-            <h1 class="my-4 text-center" style="color:white;">Weather for <span id="cityName"></span></h1>
-            <main>
-                  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                    <div class="col">
-                      <div class="card mb-4 rounded-3 shadow-sm  border-primary">
-                        <div class="card-header py-3 text-bg-primary border-primary">
-                          <h4 class="my-0 fw-normal">Temperatures</h4>
-                        </div>
-                        <div class="card-body">
-                          <h1 class="card-title pricing-card-title"><span id="temp2"></span><small class="text-muted fw-light"> <span>&#8451;</span></small></h1>
-                          <ul class="list-unstyled mt-3 mb-4">
-                            <li>Temperature is <span id="temp"></span> <span>&#8451;</span></li>
-                            <li>Min Temperature is <span id="min_temp"></span> <span>&#8451;</span></li>
-                            <li>Max Temperature is <span id="max_temp"></span> <span>&#8451;</span></li>
-                            <br>
-                            
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card mb-4 rounded-3 shadow-sm  border-primary">
-                        <div class="card-header py-3 text-bg-primary border-primary">
-                          <h4 class="my-0 fw-normal ">Humidity Info</h4>
-                        </div>
-
-
-                        <div class="card-body">
-                          <h1 class="card-title pricing-card-title"><span id="humidity2"></span><small class="text-muted fw-light">%</small></h1>
-                          <ul class="list-unstyled mt-3 mb-4">
-                              <li>Cloud PCT is <span id="cloud_pct"></span></li>
-                              <li>Feels_like is <span id="feels_like"></span></li>
-                            <li>Humidity is <span id="humidity"></span> <span>g.m -3</span></li>
-                              <br>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                        <div class="card-header py-3 text-bg-primary border-primary">
-                          <h4 class="my-0 fw-normal">Wind Speed info</h4>
-                        </div>
-                        <div class="card-body">
-                          <h1 class="card-title pricing-card-title"><span id="wind_speed2"></span><small class="text-muted fw-light">km/h</small></h1>
-                          <ul class="list-unstyled mt-3 mb-4">
-                              <li>Wind Speed is <span id="wind_speed"></span> km/h</li>
-                              <li>Wind Degrees is <span id="wind_degrees"></span>°</li>
-                            <li>Sunrise is <span id="sunrise"></span></li>
-                            <li>Sunset is <span id="sunset"></span></li>
-                          </ul>
-                          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- <h2 class="display-6 text-center mb-4"><b>Weather of Some Places</b></h2>
-              
-                  <div class="table-responsive">
-                    <table class="table text-center">
-                      <thead>
-                        <tr>
-                          <th style="width: 34%;"></th>
-                          <th style="width: 22%;">Cloud_pct</th>
-                          <th style="width: 22%;">Feels_like</th>
-                          <th style="width: 22%;">Humidity</th>
-                          <th style="width: 22%;">Max_temp</th>
-                          <th style="width: 22%;">Min_temp</th>
-                          <th style="width: 22%;">Sunrise</th>
-                          <th style="width: 22%;">Sunset</th>
-                          <th style="width: 22%;">Temp</th>
-                          <th style="width: 22%;">Wind_degrees</th>
-                          <th style="width: 22%;">Wind_speed</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row" class="text-start">Delhi</th>
-                          <td>1</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td>4</td>
-                          <td>5</td>
-                          <td>6</td>
-                          <td>7</td>
-                          <td>8</td>
-                          <td>9</td>
-                          <td>10</td>
-                          
-                        </tr>
-                        <tr>
-                          <th scope="row" class="text-start">Mumbai</th>
-                          <td>1</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td>4</td>
-                          <td>5</td>
-                          <td>6</td>
-                          <td>7</td>
-                          <td>8</td>
-                          <td>9</td>
-                          <td>10</td>
-                        </tr>
-                      </tbody>
-              
-                      <tbody>
-                        <tr>
-                          <th scope="row" class="text-start">Patna</th>
-                          <td>1</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td>4</td>
-                          <td>5</td>
-                          <td>6</td>
-                          <td>7</td>
-                          <td>8</td>
-                          <td>9</td>
-                          <td>10</td>
-                        </tr>
-                        <tr>
-                          <th scope="row" class="text-start">Chandigrah</th>
-                          <td>1</td>
-                          <td>2</td>
-                          <td>3</td>
-                          <td>4</td>
-                          <td>5</td>
-                          <td>6</td>
-                          <td>7</td>
-                          <td>8</td>
-                          <td>9</td>
-                          <td>10</td>
-                        </tr>
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                </main>
-          </div> -->
-
-          <div style="font-style: oblique; text-align: right; color: white">   
-            Designed & Developed by:-Abhinandan Mishra
           </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-<script src="script.js"></script>
-</body>
+          <!-- Humidity Card -->
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-bold">💧 Humidity Info</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title"><span id="humidity2"></span><small class="text-muted fw-light">%</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>☁️ Cloud Cover: <span id="cloud_pct"></span>%</li>
+                  <li>🔥 Feels Like: <span id="feels_like"></span> °C</li>
+                  <li>💦 Humidity: <span id="humidity"></span> g.m⁻³</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wind Card -->
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-bold">🌬️ Wind & Sun</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title"><span id="wind_speed2"></span><small class="text-muted fw-light"> km/h</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>💨 Wind Speed: <span id="wind_speed"></span> km/h</li>
+                  <li>🧭 Wind Direction: <span id="wind_degrees"></span>°</li>
+                  <li>🌅 Sunrise: <span id="sunrise"></span></li>
+                  <li>🌇 Sunset: <span id="sunset"></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <div class="footer-text">
+        🛠️ Designed & Developed by <strong>Abhinandan Mishra</strong>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
