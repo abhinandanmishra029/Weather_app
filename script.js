@@ -5,7 +5,7 @@ const options = {
     "X-RapidAPI-Host": "weather-by-api-ninjas.p.rapidapi.com",
   },
 };
-
+ 
 const getWeather = async (city) => {
   cityName.innerHTML = city;
 
