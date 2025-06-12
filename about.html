@@ -4,38 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About - Weather App</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     body {
-      background: linear-gradient(to right, #ff5f6d, #ffc371);
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: white;
       font-family: 'Segoe UI', sans-serif;
     }
-    .card {
-      background: rgba(0, 0, 0, 0.7);
-      border: none;
-      border-radius: 15px;
+
+    .navbar {
+      background-color: #00e6e6;
+      box-shadow: 0 4px 1px rgba(0, 0, 0, 0.3);
     }
+
+    .card {
+      background: rgba(30, 41, 59, 0.95);
+      border-radius: 15px;
+      border: 2px solid #00f2fe;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    }
+
     .card-title {
       font-size: 2rem;
     }
+
     h3 {
       margin-top: 30px;
       font-size: 1.5rem;
     }
+
     ul li {
       margin-bottom: 8px;
     }
+
     a {
       text-decoration: none;
+    }
+
+    input::placeholder {
+      color: #555;
     }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(73, 255, 216);">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold fs-4">🌦️ Weather App</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -43,14 +57,34 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active fw-semibold" href="index.html">🏠 Home</a>
+            <a class="nav-link fw-semibold" href="index.html">🏠 Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-semibold" href="about.html">ℹ️ About</a>
+            <a class="nav-link fw-semibold active" href="about.html">ℹ️ About</a>
           </li>
         </ul>
+
+        <!-- Search Bar -->
+        <form class="d-flex flex-grow-1 ms-lg-3 mt-2 mt-lg-0" onsubmit="searchCity(); return false;">
+          <div class="input-group w-100">
+            <input
+              id="city"
+              type="search"
+              class="form-control rounded-start-pill px-3"
+              placeholder="🔍 Enter city name"
+              style="font-size: 0.9rem;"
+            />
+            <button
+              class="btn text-white rounded-end-pill px-3"
+              style="background: linear-gradient(135deg, #0dcaf0, #00b894); border: none;"
+              type="submit"
+            >
+              Go
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </nav>
@@ -60,42 +94,60 @@
     <div class="card shadow-lg p-4">
       <h2 class="card-title text-center mb-4">👋 Welcome to My Weather App</h2>
       <p class="fs-5">
-        I'm <strong>Abhinandan Mishra</strong> 👨‍💻 — a passionate and detail-oriented web developer with over a year of experience in crafting responsive, functional, and visually captivating websites. I aim to turn ideas into reality by building user-centric web solutions. 🌐
+        I'm <strong>Abhinandan Mishra</strong> 👨‍💻 — a passionate and detail-oriented web developer with over a year of experience in crafting responsive, functional, and visually captivating websites.
       </p>
 
       <h3>💼 What I Do</h3>
       <ul>
-        <li>🎨 <strong>Custom Website Design:</strong> From scratch to final polish, pixel-perfect websites that look great on every screen.</li>
-        <li>🛠️ <strong>Web Applications:</strong> Modern, scalable, and high-performance apps tailored to your needs.</li>
-        <li>🛒 <strong>E-commerce Platforms:</strong> Seamless online stores with secure payment gateways and smooth user experience.</li>
-        <li>📈 <strong>SEO & Marketing:</strong> Improve visibility, drive traffic, and reach your audience effectively.</li>
+        <li>🎨 <strong>Custom Website Design:</strong> Pixel-perfect and responsive design.</li>
+        <li>🛠️ <strong>Web Applications:</strong> Fast, scalable, and user-friendly apps.</li>
+        <li>🛒 <strong>E-commerce Platforms:</strong> Complete online stores with modern UX.</li>
+        <li>📈 <strong>SEO & Marketing:</strong> Boost reach and web presence.</li>
       </ul>
 
       <h3>🔍 My Work Philosophy</h3>
       <p class="fs-6">
-        I strongly believe in understanding the client’s vision, maintaining clear communication, and ensuring quality in every line of code. Each project is an opportunity to innovate and bring something valuable to the table.
+        I believe in clarity, quality, and clean code. Every project is a step forward to excellence.
       </p>
 
       <h3>🌟 Why Partner With Me?</h3>
       <ul>
-        <li>📚 <strong>Skilled:</strong> Proficient in HTML, CSS, JS, React, Firebase, and modern web technologies.</li>
-        <li>🎯 <strong>Goal-Oriented:</strong> I tailor each solution specifically for your business goals.</li>
-        <li>⏱️ <strong>On-Time Delivery:</strong> Committed to meeting deadlines with full support post-launch.</li>
-        <li>🚀 <strong>Always Evolving:</strong> I stay updated with trends to offer modern and efficient solutions.</li>
+        <li>📚 <strong>Skilled:</strong> HTML, CSS, JS, React, Firebase and more.</li>
+        <li>🎯 <strong>Client-Centric:</strong> You share the idea, I bring it to life.</li>
+        <li>⏱️ <strong>On-Time Delivery:</strong> Always deadline-focused with post-launch help.</li>
+        <li>🚀 <strong>Up-to-date:</strong> I use the latest tools and trends.</li>
       </ul>
 
       <h3>📬 Let's Connect</h3>
       <p class="fs-6">
-        Have an idea or project in mind? I'm always excited to collaborate and create something impactful together.
+        Have an idea or project in mind? Let's collaborate!
         <br />
-        ✉️ Drop a message at: <a href="mailto:abhinandanmishrabusiness@gmail.com" class="text-info fw-bold">abhinandanmishrabusiness@gmail.com</a>
+        ✉️ <a href="mailto:abhinandanmishrabusiness@gmail.com" class="text-info fw-bold">abhinandanmishrabusiness@gmail.com</a>
       </p>
     </div>
   </div>
 
+  <!-- Script for search -->
+  <script>
+    function searchCity() {
+      const city = document.getElementById("city").value.trim();
+      if (city) {
+        localStorage.setItem("city", city);
+        window.location.href = "index.html";
+      }
+    }
+  </script>
+
   <!-- Bootstrap Script -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+     <!-- Footer -->
+<footer class="text-center py-4 mt-5" style="background: rgba(0, 230, 230, 0.1); border-top: 1px solid #00e6e6;">
+  <p class="mb-1" style="color: #ccc; font-size: 0.95rem;">
+    🌤️ Designed & Developed with ❤️ by <strong class="text-info">Abhinandan Mishra</strong>
+  </p>
+  <p class="mb-0" style="color: #999; font-size: 0.85rem;">
+    &copy; 2025 Weather App | All rights reserved.
+  </p>
+</footer>
 </body>
 </html>
