@@ -5,7 +5,7 @@ const options = {
     "X-RapidAPI-Host": "weather-by-api-ninjas.p.rapidapi.com",
   },
 };
- 
+
 const getWeather = async (city) => {
   cityName.innerHTML = city;
 
@@ -51,9 +51,22 @@ const getWeather = async (city) => {
   }
 };
 
+// Handle form submission (search)
 submit.addEventListener("click", (e) => {
   e.preventDefault();
-  getWeather(city.value);
+  const cityValue = city.value.trim();
+  if (cityValue) {
+    getWeather(cityValue);
+  }
 });
 
-getWeather("Ranchi");
+// Load weather based on localStorage or default to "Ranchi"
+window.addEventListener("DOMContentLoaded", () => {
+  const savedCity = localStorage.getItem("city");
+  if (savedCity) {
+    getWeather(savedCity);
+    localStorage.removeItem("city");
+  } else {
+    getWeather("Ranchi");
+  }
+});
