@@ -67,6 +67,6 @@ window.addEventListener("DOMContentLoaded", () => {
     getWeather(savedCity);
     localStorage.removeItem("city");
   } else {
-    getWeather("Ranchi");
+    getWeather("Patna");
   }
 });
