@@ -112,14 +112,13 @@
       <a class="navbar-brand fw-bold fs-4" href="index.html">🌦️ Weather App</a>
 
       <!-- Mobile Search Button -->
-    <button
+     <button
   class="btn btn-lg ms-auto d-lg-none me-2"
   onclick="toggleMobileSearch()"
   style=" color: white; font-weight: 600; padding: .3rem .6rem;"
 >
   <i class="fas fa-search"></i>
 </button>
-
 
 
 
@@ -138,6 +137,22 @@
           </li>
         </ul>
       </div>
+       <!-- Desktop Search Box -->
+    <form class="d-none d-lg-flex ms-auto me-3" onsubmit="return false;">
+      <input
+        id="city-desktop"
+        type="search"
+        class="form-control rounded-start-pill px-3 py-2"
+        placeholder="🔍 Enter city name"
+      />
+      <button
+        class="btn text-white rounded-end-pill px-4 py-2"
+        id="submit-desktop"
+        style="background: linear-gradient(135deg, #0dcaf0, #00b894); border: none;"
+      >
+        Go
+      </button>
+    </form>
     </div>
   </nav>
 
@@ -164,7 +179,7 @@
   <main>
     <div class="container">
       <h2 class="text-center mt-4">
-        🌍 Weather in <span id="cityName"></span>
+        🌍 Weather in <span id="cityName">Your City</span>
       </h2>
 
       <!-- Weather Cards -->
