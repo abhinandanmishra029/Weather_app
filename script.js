@@ -23,7 +23,7 @@ const getWeather = async (city) => {
 
     const { latitude, longitude, timezone } = geoData.results[0];
 
-    // Step 2: Fetch current + daily weather data
+    // Step 2: Fetch weather data
     const weatherRes = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,wind_direction_10m,cloud_cover&daily=temperature_2m_min,temperature_2m_max,sunrise,sunset&timezone=${timezone}`
     );
@@ -32,6 +32,7 @@ const getWeather = async (city) => {
     const current = weatherData.current;
     const daily = weatherData.daily;
 
+    // Update UI
     temp.innerHTML = current.temperature_2m;
     temp2.innerHTML = current.temperature_2m;
     feels_like.innerHTML = current.apparent_temperature;
@@ -51,22 +52,29 @@ const getWeather = async (city) => {
   }
 };
 
-// Handle form submission (search)
-submit.addEventListener("click", (e) => {
-  e.preventDefault();
-  const cityValue = city.value.trim();
+// Common function to handle city input from any source
+const handleSearch = (inputId) => {
+  const input = document.getElementById(inputId);
+  const cityValue = input.value.trim();
   if (cityValue) {
     getWeather(cityValue);
+    localStorage.setItem("city", cityValue); // Save for reload
   }
+};
+
+// Event listeners for both buttons
+document.getElementById("submit").addEventListener("click", (e) => {
+  e.preventDefault();
+  handleSearch("city");
 });
 
-// Load weather based on localStorage or default to "Ranchi"
+document.getElementById("submit-desktop").addEventListener("click", (e) => {
+  e.preventDefault();
+  handleSearch("city-desktop");
+});
+
+// Load last city or default on page load
 window.addEventListener("DOMContentLoaded", () => {
   const savedCity = localStorage.getItem("city");
-  if (savedCity) {
-    getWeather(savedCity);
-    localStorage.removeItem("city");
-  } else {
-    getWeather("Patna");
-  }
+  getWeather(savedCity || "Ranchi");
 });
